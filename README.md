@@ -65,4 +65,4 @@ PlugInstall
 Таким простым способ `vim` обновиться до последней версии и если `MacVim.app` не нужен, его можно просто выкинуть в корзину.
 
 ![картинка
-конца](https://2.bp.blogspot.com/-adiAk1fYThI/XfurLogWmAI/AAAAAAAAEuE/31wTTMAXuF8txWEjGBLXoNGZKAZerF-mQCK4BGAYYCw/s320/FullSizeRender-745973.jpg)
+конца](https://1.bp.blogspot.com/-hOxN5KX2KfY/YPplNP_w6xI/AAAAAAAAGz0/nNxSLwD5lnQhvFnce_DzmIoSRWyY9A3QACLcBGAsYHQ/s694/theend-beats.png)
