@@ -1,0 +1,81 @@
+# ГЛОБАЛЬНЫЙ ИГНОРИК
+# ==================
+
+
+# ********************
+#  ---- folders -----
+# ********************
+
+.idea
+*-GITOFF/
+000/
+.myname/
+/ystm
+rrr/
+RRR/
+XXX/
+xxx/
+node_modules/
+test-*/
+*test/
+task*/
+.vscode
+
+# ********************
+#  ---- files -----
+# ********************
+
+!000.jpeg
+!000.jpg
+!000.png
+
+.DS_Store
+*OFFGIT.*
+*GITOFF.*
+Icon?
+Icon
+000.*
+*-xxx.*
+*-XXX.*
+*-test.*
+*.zip
+*.pxm
+*.art
+*.rtf
+*.rtdf
+*.pdf
+*.workflow
+*.key
+*.pages
+*.band
+*.glyphs
+test.*
+*.vscode
+*.ystm
+*.workflow
+xxx.*
+
+*.*~
+
+# =-=-=-=-=-=-=-=-=-=- REGEXP
+
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
