@@ -1,14 +1,22 @@
-" -=-=-=-=-=-=-=-=-=-*
-" понедельник, 12 апреля 2021 г. 10:56:59
-" -=-=-=-=-=-=-=-=-=-*
+"-=-=-=-=-=-=-=-=-=-
+" воскресенье, 10 апреля 2022 г. 14:36:35
+"-=-=-=-=-=-=-=-=-=-"
 
 filetype plugin on
 
-map <F2> <S-O>-=-=-=-=-=-=-=-=-=-*<C-m><C-R>=strftime("%c")<Cr><C-m>-=-=-=-=-=-=-=-=-=-*<Esc>2k3gcc<Esc>
+" nnoremap k gk 
+" nnoremap gk k 
+" nnoremap j gj 
+" nnoremap gj j
+
+" Получение пути текущей директории
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+ map <F2> <S-O>"-=-=-=-=-=-=-=-=-=-<C-m>"<C-R>=strftime("%c")<CR><C-m>"-=-=-=-=-=-=-=-=-=-<Esc>
  map <F3> :!git add -A; git commit -m "777 - стабильный код."<CR>
  " map <F4> :!swift % <CR>
- map <F5> :!tsc % <CR>
- map <F6> :!node ~/dev/aprakos/main/aprakos.js <CR>
+ " map <F5> :!tsc % <CR>
+ " map <F6> :!node ~/dev/aprakos/main/aprakos.js <CR>
  set nocp "Режим совместимости с vi (отключение) ystm
  set expandtab
  set autoindent
@@ -53,16 +61,15 @@ map <F2> <S-O>-=-=-=-=-=-=-=-=-=-*<C-m><C-R>=strftime("%c")<Cr><C-m>-=-=-=-=-=-=
  map <Leader> <Plug>(easymotion-prefix)
  " noremap <Leader>w :w<cr>
  "map <C-n> :NERDTreeToggle<cr>
- inoremap <C-j> <C-c>
+ inoremap <C-k> <C-c>
  inoremap <C-f> <C-n>
  " inoremap <leader>l <C-^>
 
- map <leader>` ysw`<cr>
  map <leader>§ :so%<cr>
  map <leader><Space> :
  nmap gm :LivedownToggle<CR>
  nmap gC :Git commit -am "Auto commiting…"<CR>
- nmap gL :Git log<CR>
+ nmap gL :Git clog<CR>
  nmap gS :Git status<CR>
  map <leader>pp :!open %<CR><CR>
  nnoremap <leader>] :NERDTree<CR><CR>
@@ -85,15 +92,23 @@ map <F2> <S-O>-=-=-=-=-=-=-=-=-=-*<C-m><C-R>=strftime("%c")<Cr><C-m>-=-=-=-=-=-=
  Plug 'mhartington/oceanic-next'
  " Plug 'arcticicestudio/nord-vim'
  " Plug 'toyamarinyon/vim-swift'
- " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'jiangmiao/auto-pairs'
- " Plug 'vim-syntastic/syntastic'
- " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+ Plug 'vim-syntastic/syntastic'
+ " post install (yarn install | npm install) then load plugin only for editing supported files
+ Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
  Plug 'dense-analysis/ale'
- " Plug 'sbdchd/neoformat'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
- Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
+
+ Plug 'curist/vim-angular-template'
+ Plug 'burnettk/vim-angular'
+
+
 
  "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  call plug#end()
@@ -121,8 +136,8 @@ let g:jellybeans_overrides = {
  " autocmd VimEnter * :Vexplore
  " aug END
 
- autocmd vimenter * nerdtree   " открыть проводник при запуске Vim
- let NERDTreeQuitOnOpen = 0
+ " autocmd vimenter * nerdtree   " открыть проводник при запуске Vim
+ " let NERDTreeQuitOnOpen = 1
 
  " Настройка автосохранения плагина vim-auto-save
  " =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -130,6 +145,7 @@ let g:auto_save = 1
 let g:auto_save_in_insert_mode = 2
 let g:auto_save_no_updatetime = 1
 let g:auto_save_silent = 1
+
 
 " Строка статуса airline
 " =-=-=-=-=-=-=-=-=-=-=-=
@@ -142,7 +158,7 @@ let g:airline_theme='zenburn'
 " let g:ale_set_balloons = 1
 " let g:ale_linters = {
 " \   'javascript': ['eslint'],
-" " \   'typescript': ['tslint'],
+" \   'typescript': ['tslint'],
 " \}
 
 " if !exists("autocommands_loaded")
@@ -153,5 +169,8 @@ let g:airline_theme='zenburn'
 "                 au BufRead *.rux set nu
 "         aug END
 " endif
-
-
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\   'html': ['prettier'],
+\}
